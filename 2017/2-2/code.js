@@ -32,14 +32,6 @@ function main() {
   
 }
 
-function isInbounds(x, y) {
-  if(x >= 0 && x < 3 && y >= 0 && y < 3) {
-    return true;
-  }
-  return false;
-}
-
-
 function readInputAsLines() {
   try {
     const data = fs.readFileSync(__dirname+'\\input', 'utf8');
