@@ -5,25 +5,31 @@ main();
 function main() {
   const inputLines = readInputAsLines();
 
-  let arr1 = [], arr2 = [];
+  let arr1 = [], arr2 = {};
   for(let i=0; i<inputLines.length; i++) {
     if(inputLines[i] === "") {
       continue;
     }
     let [num1, num2] = inputLines[i].split("   ");
     arr1.push(parseInt(num1));
-    arr2.push(parseInt(num2));
+    num2 = parseInt(num2);
+
+    if(arr2[num2] == null) {
+      arr2[num2] = 0;
+    }
+    arr2[num2]++;
   }
 
-  arr1 = arr1.sort((a, b) => a-b);
-  arr2 = arr2.sort((a, b) => a-b);
-
-  let diff = 0;
+  let score = 0;
   for(let i=0; i<arr1.length; i++) {
-    diff += Math.abs(arr1[i] - arr2[i]);
+    let num = arr1[i];
+    if(arr2[num] == null) {
+      continue;
+    }
+    score += (num * arr2[num]);
   }
 
-  console.log(diff);
+  console.log(score);
 }
 
 
